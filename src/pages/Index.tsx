@@ -65,7 +65,33 @@ const Index = () => {
         { title: "Игра на память", time: "30:00", icon: "Brain" }
       ]
     },
-    { number: 17, title: "Речная лошадь", date: "Июнь 2025", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Бегемот — один из самых опасных гигантов Африки. Узнай, почему его называют речной лошадью и как он живёт в воде." },
+    { 
+      number: 17, 
+      title: "Речная лошадь", 
+      date: "Июнь 2025", 
+      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", 
+      description: "Бегемот — один из самых опасных гигантов Африки. Узнай, почему его называют речной лошадью и как он живёт в воде.",
+      thumbnail: "https://cdn.poehali.dev/projects/3af6c5d2-9bdc-4001-bee7-f6cc21263721/files/8c8d31bd-a47a-4035-b713-03ca509a1c3f.jpg",
+      segments: [
+        { title: "История заброшки", time: "0:30", icon: "BookOpen" },
+        { title: "Комикс", time: "2:30", icon: "BookImage" },
+        { title: "Профессия", time: "5:00", icon: "Briefcase" },
+        { title: "Постеры", time: "7:30", icon: "Image" },
+        { title: "Красная книга", time: "10:00", icon: "BookHeart" },
+        { title: "Тошкины друзья", time: "13:00", icon: "Users" },
+        { title: "Головоломка", time: "16:00", icon: "Puzzle" },
+        { title: "Фотоистория", time: "19:00", icon: "Camera" },
+        { title: "Тошка в кино", time: "21:30", icon: "Film" },
+        { title: "Мастерская", time: "24:00", icon: "Hammer" },
+        { title: "Ответы", time: "26:30", icon: "MessageCircle" },
+        { title: "Бумажный зверинец", time: "28:00", icon: "Scissors" },
+        { title: "Анонс следующего выпуска", time: "29:30", icon: "Eye" }
+      ],
+      nextEpisode: {
+        title: "Как помочь животным",
+        preview: "Узнай, как каждый может внести свой вклад в защиту природы и помочь животным в беде!"
+      }
+    },
     { number: 16, title: "Как помочь животным", date: "Май 2025", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Каждый может помочь природе! Узнай простые способы, как дети и взрослые защищают животных и их дома." },
     { number: 15, title: "Яркая мандаринка", date: "Апрель 2025", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Мандаринка — самая красочная утка в мире. Смотри, как она плавает и почему её перья переливаются всеми цветами радуги." },
     { number: 14, title: "С улыбкой из Австралии", date: "Март 2025", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Квокка — самое счастливое животное планеты. Узнай, почему эти зверьки всегда улыбаются и где их можно встретить." },
