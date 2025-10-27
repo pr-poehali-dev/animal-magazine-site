@@ -66,7 +66,9 @@ const Index = () => {
     { number: 4, title: "Охотник за эвкалиптом", date: "Май 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Коала — самый милый житель Австралии. Узнай, почему они спят 20 часов в сутки и едят только эвкалипт." },
     { number: 3, title: "Принц Персии", date: "Апрель 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Персидский леопард — загадочный хищник горных вершин. Смотри, как он охотится и прячется среди скал." },
     { number: 2, title: "С днём панды", date: "Март 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Отмечаем Международный день панды! Узнай забавные факты о бамбуковых медведях и посмотри, как их растят в зоопарках." },
-    { number: 1, title: "Самый высокий на планете", date: "Февраль 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Жираф — самое высокое животное на Земле. Узнай, как он пьёт воду, спит стоя и почему у него такая длинная шея." }
+    { number: 1, title: "Самый высокий на планете", date: "Февраль 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Жираф — самое высокое животное на Земле. Узнай, как он пьёт воду, спит стоя и почему у него такая длинная шея." },
+    { number: 0, title: "Дракон острова Комодо", date: "Ноябрь 2023", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Комодский варан — самая большая ящерица планеты. Узнай, почему его называют драконом и как он охотится на добычу втрое больше себя." },
+    { number: -1, title: "Золотая антилопа", date: "Сентябрь 2023", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Познакомься с грациозной антилопой, чья шерсть сияет на солнце как золото. Узнай, где она живёт и как спасается от хищников." }
   ];
 
   const games = [
