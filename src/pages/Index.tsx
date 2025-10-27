@@ -83,7 +83,7 @@ const Index = () => {
     { number: 2, title: "С днём панды", date: "Март 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Отмечаем Международный день панды! Узнай забавные факты о бамбуковых медведях и посмотри, как их растят в зоопарках." },
     { number: 1, title: "Самый высокий на планете", date: "Февраль 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Жираф — самое высокое животное на Земле. Узнай, как он пьёт воду, спит стоя и почему у него такая длинная шея." },
     { number: 0, title: "Дракон острова Комодо", date: "Ноябрь 2023", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Комодский варан — самая большая ящерица планеты. Узнай, почему его называют драконом и как он охотится на добычу втрое больше себя." },
-    { number: -1, title: "Золотая антилопа", date: "Сентябрь 2023", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Познакомься с грациозной антилопой, чья шерсть сияет на солнце как золото. Узнай, где она живёт и как спасается от хищников." }
+    { number: -1, title: "Золотая антилопа", date: "Сентябрь 2023", videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", description: "Познакомься с грациозной антилопой, чья шерсть сияет на солнце как золото. Узнай, где она живёт и как спасается от хищников.", thumbnail: "https://cdn.poehali.dev/projects/3af6c5d2-9bdc-4001-bee7-f6cc21263721/files/0df77b7e-e2d5-4721-8492-ba3ba1fe7aa1.jpg" }
   ];
 
   const games = [
@@ -248,11 +248,19 @@ const Index = () => {
               </div>
               <div className="max-w-4xl mx-auto space-y-6">
                 {episodes.map((episode, i) => (
-                  <Card key={i} className="hover-scale border-2 hover:border-primary transition-all animate-fade-in">
+                  <Card key={i} className="hover-scale border-2 hover:border-primary transition-all animate-fade-in overflow-hidden">
                     <CardHeader className="flex flex-row items-center gap-6">
-                      <div className="w-20 h-20 bg-primary text-white rounded-2xl flex items-center justify-center text-3xl font-bold shadow-lg">
-                        {episode.number}
-                      </div>
+                      {episode.thumbnail ? (
+                        <img 
+                          src={episode.thumbnail} 
+                          alt={episode.title}
+                          className="w-32 h-20 object-cover rounded-lg shadow-lg"
+                        />
+                      ) : (
+                        <div className="w-20 h-20 bg-primary text-white rounded-2xl flex items-center justify-center text-3xl font-bold shadow-lg">
+                          {episode.number}
+                        </div>
+                      )}
                       <div className="flex-1">
                         <CardTitle className="text-2xl mb-2">{episode.title}</CardTitle>
                         <CardDescription className="text-base">{episode.date}</CardDescription>
