@@ -49,17 +49,17 @@ const Index = () => {
   ];
 
   const episodes = [
-    { number: 11, title: "Змеи: страшные, но интересные", date: "Декабрь 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-    { number: 10, title: "Мировые редкости", date: "Ноябрь 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-    { number: 9, title: "Не медведь: Росомаха", date: "Октябрь 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-    { number: 8, title: "Повелитель полуострова", date: "Сентябрь 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-    { number: 7, title: "Морские млекопитающие", date: "Август 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-    { number: 6, title: "Самый редкий тигр", date: "Июль 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-    { number: 5, title: "Уморительный мандрил", date: "Июнь 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-    { number: 4, title: "Охотник за эвкалиптом", date: "Май 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-    { number: 3, title: "Принц Персии", date: "Апрель 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-    { number: 2, title: "С днём панды", date: "Март 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-    { number: 1, title: "Самый высокий на планете", date: "Февраль 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
+    { number: 11, title: "Змеи: страшные, но интересные", date: "Декабрь 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Узнай удивительные факты о самых необычных змеях планеты. Почему они так важны для природы и как себя вести при встрече с ними." },
+    { number: 10, title: "Мировые редкости", date: "Ноябрь 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Познакомься с самыми редкими животными Земли. Узнай, как учёные защищают исчезающие виды и что каждый может сделать для сохранения природы." },
+    { number: 9, title: "Не медведь: Росомаха", date: "Октябрь 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Росомаха — один из самых отважных зверей северных лесов. Смотри, как она охотится и почему её называют «маленьким медведем»." },
+    { number: 8, title: "Повелитель полуострова", date: "Сентябрь 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Отправляйся в путешествие на Камчатку, где живут самые большие бурые медведи. Узнай об их повадках и образе жизни." },
+    { number: 7, title: "Морские млекопитающие", date: "Август 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Погрузись в мир океана вместе с дельфинами, китами и тюленями. Узнай, как они дышат под водой и общаются друг с другом." },
+    { number: 6, title: "Самый редкий тигр", date: "Июль 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Амурский тигр — символ дикой природы России. Смотри уникальные кадры из заповедников и узнай, как спасают этих величественных кошек." },
+    { number: 5, title: "Уморительный мандрил", date: "Июнь 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Познакомься с самой яркой обезьяной планеты! Узнай, почему мандрилы такие разноцветные и как они живут в африканских джунглях." },
+    { number: 4, title: "Охотник за эвкалиптом", date: "Май 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Коала — самый милый житель Австралии. Узнай, почему они спят 20 часов в сутки и едят только эвкалипт." },
+    { number: 3, title: "Принц Персии", date: "Апрель 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Персидский леопард — загадочный хищник горных вершин. Смотри, как он охотится и прячется среди скал." },
+    { number: 2, title: "С днём панды", date: "Март 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Отмечаем Международный день панды! Узнай забавные факты о бамбуковых медведях и посмотри, как их растят в зоопарках." },
+    { number: 1, title: "Самый высокий на планете", date: "Февраль 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Жираф — самое высокое животное на Земле. Узнай, как он пьёт воду, спит стоя и почему у него такая длинная шея." }
   ];
 
   const games = [
@@ -332,6 +332,13 @@ const Index = () => {
               ></iframe>
             )}
           </div>
+          {selectedEpisode && (
+            <div className="mt-4 p-4 bg-muted rounded-lg">
+              <p className="text-lg leading-relaxed">
+                {episodes.find(ep => ep.number === selectedEpisode)?.description}
+              </p>
+            </div>
+          )}
         </DialogContent>
       </Dialog>
 
