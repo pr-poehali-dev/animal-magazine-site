@@ -99,7 +99,14 @@ const Index = () => {
         { title: "Тошкины друзья", time: "13:30", icon: "Users" },
         { title: "Головоломка", time: "16:10", icon: "Puzzle" },
         { title: "Фотоистория", time: "18:45", icon: "Camera" },
-        { title: "Тошка в кино", time: "21:20", icon: "Film" },
+        { title: "Тошка в кино", time: "21:20", icon: "Film", movies: [
+          { title: "Зверобойщики", date: "31 августа", type: "Мультфильм" },
+          { title: "Монстр и магия синих морей", date: "21 сентября", type: "Мультфильм" },
+          { title: "Мой Хатико", date: "31 августа", type: "Фильм" },
+          { title: "Повелитель ветра", date: "5 октября", type: "Фильм" },
+          { title: "Чижик-Пыжик возвращается", date: "31 августа", type: "Фильм" },
+          { title: "По щучьему велению", date: "26 октября", type: "Фильм" }
+        ] },
         { title: "Мастерская", time: "23:50", icon: "Hammer" },
         { title: "Ответы", time: "26:15", icon: "MessageCircle" },
         { title: "Бумажный зверинец", time: "28:00", icon: "Scissors" },
@@ -403,25 +410,46 @@ const Index = () => {
                   <h3 className="text-xl font-bold mb-3">📋 Рубрики выпуска (30 минут):</h3>
                   <div className="grid gap-2">
                     {episodes.find(ep => ep.number === selectedEpisode)?.segments?.map((segment: any, i: number) => (
-                      <Button
-                        key={i}
-                        variant="outline"
-                        className="justify-start h-auto py-3 px-4"
-                        onClick={() => {
-                          const video = document.querySelector('video') as HTMLVideoElement;
-                          if (video) {
-                            const [minutes, seconds] = segment.time.split(':').map(Number);
-                            video.currentTime = minutes * 60 + seconds;
-                            video.play();
-                          }
-                        }}
-                      >
-                        <Icon name={segment.icon} size={20} className="mr-3" />
-                        <div className="flex-1 text-left">
-                          <div className="font-semibold">{segment.title}</div>
-                        </div>
-                        <Badge variant="secondary">{segment.time}</Badge>
-                      </Button>
+                      <div key={i}>
+                        <Button
+                          variant="outline"
+                          className="justify-start h-auto py-3 px-4 w-full"
+                          onClick={() => {
+                            const video = document.querySelector('video') as HTMLVideoElement;
+                            if (video) {
+                              const [minutes, seconds] = segment.time.split(':').map(Number);
+                              video.currentTime = minutes * 60 + seconds;
+                              video.play();
+                            }
+                          }}
+                        >
+                          <Icon name={segment.icon} size={20} className="mr-3" />
+                          <div className="flex-1 text-left">
+                            <div className="font-semibold">{segment.title}</div>
+                          </div>
+                          <Badge variant="secondary">{segment.time}</Badge>
+                        </Button>
+                        
+                        {segment.movies && segment.movies.length > 0 && (
+                          <div className="ml-4 mt-2 p-3 bg-background rounded-lg border">
+                            <h4 className="text-sm font-semibold mb-2 flex items-center gap-2">
+                              <Icon name="Popcorn" size={16} />
+                              Премьеры:
+                            </h4>
+                            <div className="space-y-2">
+                              {segment.movies.map((movie: any, movieIndex: number) => (
+                                <div key={movieIndex} className="flex items-start gap-2 text-sm">
+                                  <Badge variant="outline" className="shrink-0">{movie.type}</Badge>
+                                  <div className="flex-1">
+                                    <div className="font-medium">{movie.title}</div>
+                                    <div className="text-xs text-muted-foreground">{movie.date}</div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     ))}
                   </div>
                 </div>
