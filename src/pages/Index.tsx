@@ -3,9 +3,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
 import { useState } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
+  const [selectedEpisode, setSelectedEpisode] = useState<number | null>(null);
 
   const animals = [
     {
@@ -47,17 +49,17 @@ const Index = () => {
   ];
 
   const episodes = [
-    { number: 11, title: "Змеи: страшные, но интересные", date: "Декабрь 2024" },
-    { number: 10, title: "Мировые редкости", date: "Ноябрь 2024" },
-    { number: 9, title: "Не медведь: Росомаха", date: "Октябрь 2024" },
-    { number: 8, title: "Повелитель полуострова", date: "Сентябрь 2024" },
-    { number: 7, title: "Морские млекопитающие", date: "Август 2024" },
-    { number: 6, title: "Самый редкий тигр", date: "Июль 2024" },
-    { number: 5, title: "Уморительный мандрил", date: "Июнь 2024" },
-    { number: 4, title: "Охотник за эвкалиптом", date: "Май 2024" },
-    { number: 3, title: "Принц Персии", date: "Апрель 2024" },
-    { number: 2, title: "С днём панды", date: "Март 2024" },
-    { number: 1, title: "Самый высокий на планете", date: "Февраль 2024" }
+    { number: 11, title: "Змеи: страшные, но интересные", date: "Декабрь 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+    { number: 10, title: "Мировые редкости", date: "Ноябрь 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+    { number: 9, title: "Не медведь: Росомаха", date: "Октябрь 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+    { number: 8, title: "Повелитель полуострова", date: "Сентябрь 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+    { number: 7, title: "Морские млекопитающие", date: "Август 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+    { number: 6, title: "Самый редкий тигр", date: "Июль 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+    { number: 5, title: "Уморительный мандрил", date: "Июнь 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+    { number: 4, title: "Охотник за эвкалиптом", date: "Май 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+    { number: 3, title: "Принц Персии", date: "Апрель 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+    { number: 2, title: "С днём панды", date: "Март 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+    { number: 1, title: "Самый высокий на планете", date: "Февраль 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
   ];
 
   const games = [
@@ -222,7 +224,7 @@ const Index = () => {
               </div>
               <div className="max-w-4xl mx-auto space-y-6">
                 {episodes.map((episode, i) => (
-                  <Card key={i} className="hover-scale cursor-pointer border-2 hover:border-primary transition-all animate-fade-in">
+                  <Card key={i} className="hover-scale border-2 hover:border-primary transition-all animate-fade-in">
                     <CardHeader className="flex flex-row items-center gap-6">
                       <div className="w-20 h-20 bg-primary text-white rounded-2xl flex items-center justify-center text-3xl font-bold shadow-lg">
                         {episode.number}
@@ -231,7 +233,7 @@ const Index = () => {
                         <CardTitle className="text-2xl mb-2">{episode.title}</CardTitle>
                         <CardDescription className="text-base">{episode.date}</CardDescription>
                       </div>
-                      <Button size="lg">
+                      <Button size="lg" onClick={() => setSelectedEpisode(episode.number)}>
                         <Icon name="Play" size={24} className="mr-2" />
                         Смотреть
                       </Button>
@@ -308,6 +310,30 @@ const Index = () => {
           </section>
         )}
       </main>
+
+      <Dialog open={selectedEpisode !== null} onOpenChange={() => setSelectedEpisode(null)}>
+        <DialogContent className="max-w-4xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl">
+              {selectedEpisode && episodes.find(ep => ep.number === selectedEpisode)?.title}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="aspect-video w-full">
+            {selectedEpisode && (
+              <iframe
+                width="100%"
+                height="100%"
+                src={episodes.find(ep => ep.number === selectedEpisode)?.videoUrl}
+                title="Видеоплеер"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="rounded-lg"
+              ></iframe>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <footer className="bg-primary text-white py-12 mt-16">
         <div className="container mx-auto px-4">
