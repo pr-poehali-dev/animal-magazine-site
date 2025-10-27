@@ -49,7 +49,7 @@ const Index = () => {
   ];
 
   const episodes = [
-    { number: 18, title: "Спасённые в зоопарках", date: "Июль 2025", videoUrl: "https://www.youtube.com/embed/jNQXAC9IVRw", description: "Узнай истории животных, которых спасли от вымирания благодаря зоопаркам. Как учёные возвращают редкие виды в дикую природу." },
+    { number: 18, title: "Спасённые в зоопарках", date: "Июль 2025", videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", description: "Узнай истории животных, которых спасли от вымирания благодаря зоопаркам. Как учёные возвращают редкие виды в дикую природу." },
     { number: 17, title: "Речная лошадь", date: "Июнь 2025", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Бегемот — один из самых опасных гигантов Африки. Узнай, почему его называют речной лошадью и как он живёт в воде." },
     { number: 16, title: "Как помочь животным", date: "Май 2025", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Каждый может помочь природе! Узнай простые способы, как дети и взрослые защищают животных и их дома." },
     { number: 15, title: "Яркая мандаринка", date: "Апрель 2025", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Мандаринка — самая красочная утка в мире. Смотри, как она плавает и почему её перья переливаются всеми цветами радуги." },
@@ -327,18 +327,18 @@ const Index = () => {
               {selectedEpisode && episodes.find(ep => ep.number === selectedEpisode)?.title}
             </DialogTitle>
           </DialogHeader>
-          <div className="aspect-video w-full">
+          <div className="aspect-video w-full bg-black rounded-lg overflow-hidden">
             {selectedEpisode && (
-              <iframe
+              <video
                 width="100%"
                 height="100%"
-                src={episodes.find(ep => ep.number === selectedEpisode)?.videoUrl}
-                title="Видеоплеер"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="rounded-lg"
-              ></iframe>
+                controls
+                className="w-full h-full"
+                poster={episodes.find(ep => ep.number === selectedEpisode)?.videoUrl}
+              >
+                <source src={episodes.find(ep => ep.number === selectedEpisode)?.videoUrl} type="video/mp4" />
+                Ваш браузер не поддерживает видео.
+              </video>
             )}
           </div>
           {selectedEpisode && (
