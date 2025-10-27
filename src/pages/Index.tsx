@@ -49,7 +49,7 @@ const Index = () => {
   ];
 
   const episodes = [
-    { number: 18, title: "Спасённые в зоопарках", date: "Июль 2025", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Узнай истории животных, которых спасли от вымирания благодаря зоопаркам. Как учёные возвращают редкие виды в дикую природу." },
+    { number: 18, title: "Спасённые в зоопарках", date: "Июль 2025", videoUrl: "https://www.youtube.com/embed/jNQXAC9IVRw", description: "Узнай истории животных, которых спасли от вымирания благодаря зоопаркам. Как учёные возвращают редкие виды в дикую природу." },
     { number: 17, title: "Речная лошадь", date: "Июнь 2025", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Бегемот — один из самых опасных гигантов Африки. Узнай, почему его называют речной лошадью и как он живёт в воде." },
     { number: 16, title: "Как помочь животным", date: "Май 2025", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Каждый может помочь природе! Узнай простые способы, как дети и взрослые защищают животных и их дома." },
     { number: 15, title: "Яркая мандаринка", date: "Апрель 2025", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Мандаринка — самая красочная утка в мире. Смотри, как она плавает и почему её перья переливаются всеми цветами радуги." },
