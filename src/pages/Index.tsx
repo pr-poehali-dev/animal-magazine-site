@@ -83,7 +83,33 @@ const Index = () => {
     { number: 2, title: "С днём панды", date: "Март 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Отмечаем Международный день панды! Узнай забавные факты о бамбуковых медведях и посмотри, как их растят в зоопарках." },
     { number: 1, title: "Самый высокий на планете", date: "Февраль 2024", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Жираф — самое высокое животное на Земле. Узнай, как он пьёт воду, спит стоя и почему у него такая длинная шея." },
     { number: 0, title: "Дракон острова Комодо", date: "Ноябрь 2023", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Комодский варан — самая большая ящерица планеты. Узнай, почему его называют драконом и как он охотится на добычу втрое больше себя." },
-    { number: -1, title: "Золотая антилопа", date: "Сентябрь 2023", videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", description: "Познакомься с грациозной антилопой, чья шерсть сияет на солнце как золото. Узнай, где она живёт и как спасается от хищников.", thumbnail: "https://cdn.poehali.dev/projects/3af6c5d2-9bdc-4001-bee7-f6cc21263721/files/0df77b7e-e2d5-4721-8492-ba3ba1fe7aa1.jpg" }
+    { 
+      number: -1, 
+      title: "Золотая антилопа", 
+      date: "Сентябрь 2023", 
+      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", 
+      description: "Познакомься с грациозной антилопой, чья шерсть сияет на солнце как золото. Узнай, где она живёт и как спасается от хищников.", 
+      thumbnail: "https://cdn.poehali.dev/projects/3af6c5d2-9bdc-4001-bee7-f6cc21263721/files/0df77b7e-e2d5-4721-8492-ba3ba1fe7aa1.jpg",
+      segments: [
+        { title: "История заброшки", time: "0:30", icon: "BookOpen" },
+        { title: "Комикс", time: "2:15", icon: "BookImage" },
+        { title: "Профессия", time: "4:45", icon: "Briefcase" },
+        { title: "Постеры", time: "7:20", icon: "Image" },
+        { title: "Настольная игра", time: "10:00", icon: "Gamepad2" },
+        { title: "Тошкины друзья", time: "13:30", icon: "Users" },
+        { title: "Головоломка", time: "16:10", icon: "Puzzle" },
+        { title: "Фотоистория", time: "18:45", icon: "Camera" },
+        { title: "Тошка в кино", time: "21:20", icon: "Film" },
+        { title: "Мастерская", time: "23:50", icon: "Hammer" },
+        { title: "Ответы", time: "26:15", icon: "MessageCircle" },
+        { title: "Бумажный зверинец", time: "28:00", icon: "Scissors" },
+        { title: "Анонс: Кто укусит за бочок", time: "29:30", icon: "Eye" }
+      ],
+      nextEpisode: {
+        title: "Кто укусит за бочок",
+        preview: "Любимые книги от любителей животных, бумажный зверинец «Золотой гребешок», комикс «Как попал Тошка в сказку» и много интересного!"
+      }
+    }
   ];
 
   const games = [
@@ -374,7 +400,7 @@ const Index = () => {
               
               {episodes.find(ep => ep.number === selectedEpisode)?.segments && (
                 <div className="mt-4">
-                  <h3 className="text-xl font-bold mb-3">Рубрики выпуска:</h3>
+                  <h3 className="text-xl font-bold mb-3">📋 Рубрики выпуска (30 минут):</h3>
                   <div className="grid gap-2">
                     {episodes.find(ep => ep.number === selectedEpisode)?.segments?.map((segment: any, i: number) => (
                       <Button
@@ -398,6 +424,21 @@ const Index = () => {
                       </Button>
                     ))}
                   </div>
+                </div>
+              )}
+              
+              {episodes.find(ep => ep.number === selectedEpisode)?.nextEpisode && (
+                <div className="mt-4 p-4 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg border-2 border-primary/20">
+                  <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                    <Icon name="Sparkles" size={24} />
+                    В следующем выпуске:
+                  </h3>
+                  <p className="text-lg font-semibold mb-2">
+                    {episodes.find(ep => ep.number === selectedEpisode)?.nextEpisode?.title}
+                  </p>
+                  <p className="text-muted-foreground">
+                    {episodes.find(ep => ep.number === selectedEpisode)?.nextEpisode?.preview}
+                  </p>
                 </div>
               )}
             </>
