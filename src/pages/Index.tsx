@@ -216,6 +216,9 @@ const Index = () => {
               <div className="text-center mb-12 animate-fade-in">
                 <h2 className="text-4xl font-bold mb-4">📺 Последние выпуски</h2>
                 <p className="text-xl text-muted-foreground">Смотри новые серии каждую неделю</p>
+                <Badge variant="secondary" className="text-lg px-4 py-2 mt-4">
+                  Всего выпусков: {episodes.length}
+                </Badge>
               </div>
               <div className="max-w-4xl mx-auto space-y-6">
                 {episodes.map((episode, i) => (
