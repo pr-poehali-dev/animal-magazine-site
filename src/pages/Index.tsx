@@ -49,7 +49,22 @@ const Index = () => {
   ];
 
   const episodes = [
-    { number: 18, title: "Спасённые в зоопарках", date: "Июль 2025", videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", description: "Узнай истории животных, которых спасли от вымирания благодаря зоопаркам. Как учёные возвращают редкие виды в дикую природу." },
+    { 
+      number: 18, 
+      title: "Спасённые в зоопарках", 
+      date: "Сентябрь 2024", 
+      videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", 
+      description: "Узнай истории животных, которых спасли от вымирания благодаря зоопаркам. Как учёные возвращают редкие виды в дикую природу.",
+      segments: [
+        { title: "История заброшки и друзья", time: "0:30", icon: "BookOpen" },
+        { title: "Два постера", time: "5:15", icon: "Image" },
+        { title: "Красная книга", time: "10:00", icon: "BookHeart" },
+        { title: "Мастерская", time: "15:20", icon: "Hammer" },
+        { title: "Ташкин репортаж", time: "20:45", icon: "Video" },
+        { title: "Турнир знатоков", time: "25:10", icon: "Trophy" },
+        { title: "Игра на память", time: "30:00", icon: "Brain" }
+      ]
+    },
     { number: 17, title: "Речная лошадь", date: "Июнь 2025", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Бегемот — один из самых опасных гигантов Африки. Узнай, почему его называют речной лошадью и как он живёт в воде." },
     { number: 16, title: "Как помочь животным", date: "Май 2025", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Каждый может помочь природе! Узнай простые способы, как дети и взрослые защищают животных и их дома." },
     { number: 15, title: "Яркая мандаринка", date: "Апрель 2025", videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", description: "Мандаринка — самая красочная утка в мире. Смотри, как она плавает и почему её перья переливаются всеми цветами радуги." },
@@ -342,11 +357,42 @@ const Index = () => {
             )}
           </div>
           {selectedEpisode && (
-            <div className="mt-4 p-4 bg-muted rounded-lg">
-              <p className="text-lg leading-relaxed">
-                {episodes.find(ep => ep.number === selectedEpisode)?.description}
-              </p>
-            </div>
+            <>
+              <div className="mt-4 p-4 bg-muted rounded-lg">
+                <p className="text-lg leading-relaxed">
+                  {episodes.find(ep => ep.number === selectedEpisode)?.description}
+                </p>
+              </div>
+              
+              {episodes.find(ep => ep.number === selectedEpisode)?.segments && (
+                <div className="mt-4">
+                  <h3 className="text-xl font-bold mb-3">Рубрики выпуска:</h3>
+                  <div className="grid gap-2">
+                    {episodes.find(ep => ep.number === selectedEpisode)?.segments?.map((segment: any, i: number) => (
+                      <Button
+                        key={i}
+                        variant="outline"
+                        className="justify-start h-auto py-3 px-4"
+                        onClick={() => {
+                          const video = document.querySelector('video') as HTMLVideoElement;
+                          if (video) {
+                            const [minutes, seconds] = segment.time.split(':').map(Number);
+                            video.currentTime = minutes * 60 + seconds;
+                            video.play();
+                          }
+                        }}
+                      >
+                        <Icon name={segment.icon} size={20} className="mr-3" />
+                        <div className="flex-1 text-left">
+                          <div className="font-semibold">{segment.title}</div>
+                        </div>
+                        <Badge variant="secondary">{segment.time}</Badge>
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </>
           )}
         </DialogContent>
       </Dialog>
