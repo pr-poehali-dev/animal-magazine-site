@@ -47,9 +47,9 @@ const Index = () => {
   ];
 
   const episodes = [
-    { number: 24, title: "Тайны океана", date: "15 октября 2024" },
-    { number: 23, title: "Жизнь в саванне", date: "8 октября 2024" },
-    { number: 22, title: "Северные животные", date: "1 октября 2024" }
+    { number: 26, title: "Самый высокий на планете", date: "29 октября 2024" },
+    { number: 25, title: "С днём панды", date: "22 октября 2024" },
+    { number: 24, title: "Принц Персии", date: "15 октября 2024" }
   ];
 
   const games = [
